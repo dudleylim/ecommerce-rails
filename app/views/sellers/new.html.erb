@@ -3,7 +3,38 @@
     <head></head>
     <body>
 
-    
+    <%= form_for @seller do |s| %>
+        <div>
+            <%= s.label :email %>
+            <%= s.email_field :email %>
+            
+        </div>
+
+        <div>
+            <%= s.label :password %>
+            <%= s.password_field :password %>
+        </div>
+
+        <div>
+            <%= s.label :first_name %>
+            <%= s.text_field :first_name %>
+        </div>
+
+        <div>
+            <%= s.label :last_name %>
+            <%= s.text_field :last_name %>
+        </div>
+
+        <div>
+            <%= s.label :sex %>
+            <%= s.select :sex, ['Male', 'Female', 'Other'] %>
+        </div>
+
+        <div>
+            <%= s.label :birthday%>
+            <%= s.date_field :birthday %>
+        </div>
+    <% end %>
     
     </body>
 </html>
