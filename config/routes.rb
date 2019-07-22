@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :pages
   resources :sellers
   resources :buyers
+  resources :categories
+  resources :sales
 end

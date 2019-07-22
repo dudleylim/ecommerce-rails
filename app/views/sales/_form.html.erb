@@ -1,0 +1,28 @@
+<%= form_for @sal do |s| %>
+	<div>
+        <%= s.label :seller_id %>
+        <%= s.collection_select(:seller_id, Seller.all, :id, :last_name) %>
+    </div>
+
+    <div>
+        <%= s.label :buyer_id %>
+        <%= s.collection_select(:buyer_id, Buyer.all, :id, :last_name) %>
+    </div>
+
+    <div>
+        <%= s.label :product_id %>
+        <%= s.collection_select(:product_id, Product.all, :id, :name) %>
+    </div>
+
+    <div>
+        <%= s.label :price %>
+        <%= s.text_field :price %>
+    </div>
+
+    <div>
+    	<%= s.label :remarks %>
+    	<%= s.text_field :remarks %>
+    </div>
+
+    <%= s.submit "Submit Sale" %>
+<% end %>
