@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h2>Category list</h2>
+        <table border = "1">
+         <thead>
+             <th>ID</th>
+             <th>Name</th>
+         </thead>
+
+         <% @categories.each do |cat| %>
+             <tbody>
+                 <td> <%= cat.id %> </td>
+                 <td> <%= cat.name %> </td>
+             </tbody>
+         <% end %>
+         </table>
+
+        <br>
+
+        <%= form_for @product do |prod| %>
+        <div>
+            <%= prod.label :name %>
+            <%= prod.text_field :name %>
+        </div>
+
+        <div>
+            <%= prod.label :description %>
+            <%= prod.text_field :description %>
+        </div>
+
+        <div>
+            <%= prod.label :category%>
+            <%= prod.collection_select(:category, @categories, :id, :name) %>
+        </div>
+
+        <%= prod.submit %>
+    <% end %>
+    </body>
+</html>

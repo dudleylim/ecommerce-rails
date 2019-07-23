@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <table border = "1">
+    <thead>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+    </thead>
+
+    <% @products.each do |prod| %>
+        <tbody>
+            <td> <%= prod.name %> </td>
+            <td> <%= prod.description %> </td>
+            <td> <%= prod.category.name %> </td>
+        </tbody>
+    <% end %>
+    </table>
+
+    <%= link_to "Create product", new_product_path%>
+</body>
+</html>

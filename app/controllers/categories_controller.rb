@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
 		@categorie = Categories.new(categorie_params)
 		if @categorie.save
             flash[:notice] = "Added new Category"
-            redirect_to categories_index_path
+            redirect_to root_path
         else
             render 'new.html.erb'
         end

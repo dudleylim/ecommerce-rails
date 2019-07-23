@@ -1,18 +1,21 @@
 class SalesController < ApplicationController	
 	def index
-		@sal = Sale.all
+		@sales = Sale.all
 		render 'index.html.erb'
 	end
 
 	def new
-		@sal = Sale.new
+		@sale = Sale.new
 		render 'new.html.erb'
 	end
 
 	def create
-		@sal = Sale.new(sales_params)
+		@sale = Sale.new(sales_params)
+
+		@sale.seller_id = current_user.id
+		@sale.buyer_id = nil
 		
-		if @sal.save
+		if @sale.save
 			redirect_to root_path
 		else
 			flash[:notice] = "Error"
@@ -21,14 +24,14 @@ class SalesController < ApplicationController
 	end
 
 	def edit
-		@sal = Sale.find(params[:id])
+		@sale = Sale.find(params[:id])
 		render 'edit.html.erb'
 	end
 
 	def update
-		@sal = Sale.find(params[:id])
+		@sale = Sale.find(params[:id])
 
-		if @sal.update(sales_params)
+		if @sale.update(sales_params)
 			flash[:notice] = "Sale Updated"
 			redirect_to sales_path
 		else
@@ -39,15 +42,15 @@ class SalesController < ApplicationController
 	end
 
 	def destroy
-		@sal = Sale.find(params[:id])
+		@sale = Sale.find(params[:id])
 
-        @sal.destroy
+        @sale.destroy
         flash[:notice] = "Successfully removed series"
         redirect_to sales_path
 	end
 
 	private
         def sales_params
-            params.require(:sale).permit(:name, :seller_id, :buyer_id, :product_id, :price, :remarks)
+            params.require(:sale).permit(:seller_id, :buyer_id, :product_id, :price, :remarks)
         end
 end

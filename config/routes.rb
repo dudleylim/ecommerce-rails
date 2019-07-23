@@ -6,8 +6,14 @@ Rails.application.routes.draw do
   resources :buyers
   resources :categories
   resources :sales
+  resources :products
 
-  get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destory'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
+  get 'signup', to: 'pages#signup'
+
+  get 'products', to: 'products#index'
+  get 'sales', to: 'sales#index'
 end
