@@ -9,7 +9,7 @@
              <th>Name</th>
          </thead>
 
-         <% @categories.each do |cat| %>
+         <% @categorie.each do |cat| %>
              <tbody>
                  <td> <%= cat.id %> </td>
                  <td> <%= cat.name %> </td>
@@ -32,7 +32,7 @@
 
         <div>
             <%= prod.label :category%>
-            <%= prod.collection_select(:category, @categories, :id, :name) %>
+            <%= prod.collection_select(:category_id, @categorie, :id, :name) %>
         </div>
 
         <%= prod.submit %>

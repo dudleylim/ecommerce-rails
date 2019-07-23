@@ -6,15 +6,16 @@ class ProductsController < ApplicationController
 
 	def new
         @product = Product.new
-        @categories = Category.all
+        @categorie = Category.all
 		render 'new.html.erb'
 	end
 
 	def create
 		@product = Product.new(product_params)
+        @categorie = Category.all
 		if @product.save
             flash[:notice] = "Added new Product"
-            redirect_to products_index_path
+            redirect_to products_path
         else
             render 'new.html.erb'
         end
