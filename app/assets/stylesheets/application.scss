@@ -17,6 +17,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
 body{
 	
 background: url('smoltv.jpg'); 
@@ -24,3 +25,124 @@ background: url('smoltv.jpg');
 background-size: 100%;
 
 }
+
+table {  
+    color: #333;
+    
+    width: 640px; 
+    border-collapse: 
+    collapse; border-spacing: 0; 
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+td, th {  
+    border: 1px solid transparent; 
+    height: 30px; 
+    transition: all 0.3s;
+    margin: 10px;
+    padding: 18px;  
+}
+
+th {  
+    background: #DFDFDF;  
+    font-weight: bold;
+}
+
+td {  
+    background: #FAFAFA;
+    text-align: center;
+}
+       
+tr:nth-child(even) td { background: #F1F1F1; }   
+   
+tr:nth-child(odd) td { background: #FEFEFE; }  
+
+tr td:hover { background: #666; color: #FFF; }  
+
+body{
+	text-align:center;
+}
+
+h1{
+	
+	border-radius: 25px;
+  border: 2px solid white;
+  padding: 20px; 
+  width: 200px;
+  height: 150px;
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 20px;
+  color: white; 
+}
+div{
+	color:black;
+}
+p{
+	color:white;
+}
+
+.links {
+  background-color: #f06969;
+  box-shadow: 0 5px 0 #ed4c4c;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  display:inline-block;
+  border-radius: 25px;
+  margin: 25px;
+}
+
+.links:hover {
+  background-color: #ed8282;
+  display:inline-block;
+  border-radius: 25px;
+}
+
+.links:active {
+  background-color: #f06969;
+  box-shadow: none;
+  top: 5px;
+  display:inline-block;
+  border-radius: 25px;
+}
+
+.btn-color {
+  color: #FFFFFF;
+}
+
+.btn-color:hover {
+  color: #EEEEEE;
+}
+
+.bg-navbar {
+  background-color: #7c9192;
+}
+
+/* https://stackoverflow.com/questions/16625972/change-color-of-bootstrap-navbar-on-hover-link */
+ul.nav a:hover { background-color: #7c9192 !important; }
+
+/*https://stackoverflow.com/questions/18036315/centering-bootstrap-input-fields*/
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
+
+.frm-style {
+  font-family: "Segoe ui light"; font-weight: 50; font-size: 20px;
+}
+
+#frm-title {
+  font-family: "Segoe UI"; font-size: 48px; font-style: normal; font-variant: normal; font-weight: 50; line-height: 37.4px; padding-top: 15px;
+}
+
+#frm-bg {
+  background-image: linear-gradient(rgba(232,230,227,0), rgba(232,230,227,1))
+}
+
+#white-box {
+  background-color: #DDDDDD;
+}
+
