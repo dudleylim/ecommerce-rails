@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :buyers
   resources :categories
   resources :sales
+
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destory'
 end
