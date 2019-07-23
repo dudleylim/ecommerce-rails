@@ -1,16 +1,21 @@
 class SessionsController < ApplicationController
 
 	def create
-		user = Seller.find_by(email: params[:session][:email].downcase
+		if Seller.find_by(email: params[:session][:email]) == nil
+			user = Buyer.find_by(email: params[:session][:email].downcase)
+		else
+			user = Seller.find_by(email: params[:session][:email].downcase)
+		end
 
 		if user && user.authenticate(params[:session][:password])
-			session[:user_id] = user.id
-
+			session[:username] = user.first_name
+			
 			flash[:success] = "you have successfully been logged in"
-			redirect_to #seller_path
+			redirect_to root_path
 		else
 			flash.now[:danger] = "There is a problem with your log in credentials."
-			render 'new'
+			render 'new.html.erb'
+		end
 	end
 
 	def new
@@ -18,7 +23,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		session[:user_id] = nil
+		session[:username] = nil
 		flash[:notice] = "You have been logged out"
 		redirect_to root_path
 	end

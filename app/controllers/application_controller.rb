@@ -1,2 +1,36 @@
 class ApplicationController < ActionController::Base
+    helper_method :current_user, :logged_in?, :is_buyer?, :is_seller?
+
+    def current_user
+        if session[:username]
+            if Buyer.find_by(first_name: session[:username]) == nil
+		    	@current_user ||= Seller.find_by(first_name: session[:username]) 
+		    else
+		    	@current_user ||= Buyer.find_by(first_name: session[:username])
+            end
+        end
+    end
+
+    def logged_in?
+        !!current_user
+    end
+
+    def is_buyer?
+        if logged_in?
+            current_user.instance_of? Buyer
+        end
+    end
+
+    def is_seller?
+        if logged_in?
+            current_user.instance_of? Seller
+        end
+    end
+
+    def require_user
+        if !logged_in?
+            flash[:danger] = "not logged in"
+            redirect_to root_path
+        end
+    end
 end

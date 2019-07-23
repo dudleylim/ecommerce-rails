@@ -4,26 +4,26 @@
 	<title></title>
 </head>
 <body>
-	<h1>Sales and Stuff</h1>
+	<h1>For Sale</h1>
 	<table>
 		<tr>
 			<th>Product</th>
 			<th>Seller</th>
-			<th>Buyer</th>
 			<th>Price</th>
 			<th>Remarks</th>
 		</tr>
 
-		<% @sal.each do |s| %>
-		<tr>
-			<td> <%= s.product.name %> </td>
-			<td> <%= s.seller.first_name %></td>
-			<td> <%= s.buyer.first_name %></td>
-			<td> <%= s.price %> </td>
-			<td> <%= s.remarks %> </td>
-			<td> <%= link_to "edit", edit_sale_path(s) %> </td>
-			<td> <%= link_to "destory", sale_path(s), method: :delete %> </td>
-		</tr>
+		<% @sales.each do |s| %>
+			<% if s.buyer == nil %>
+				<tr>
+					<td> <%= s.product.name %> </td>
+					<td> <%= s.seller.first_name %></td>
+					<td> <%= s.price %> </td>
+					<td> <%= s.remarks %> </td>
+					<td> <%= link_to "edit", edit_sale_path(s) %> </td>
+					<td> <%= link_to "destory", sale_path(s), method: :delete %> </td>
+				</tr>
+			<% end %>
 		<% end %>
 	</table>
 

@@ -4,9 +4,38 @@
 	<title>Final Project</title>
 </head>
 <body>
-	<h2>みんながんばって！プロジェクトをしまいます。</h2>
-	<p>Let's finish the Project!</p>
 
-	<%= link_to "test", sales_path %>
+	<% if logged_in? %>
+	<p>hi</p>
+	<%= current_user.first_name %>
+	<%= is_buyer? %>
+	<% end %>
+
+	<br>
+
+	<% if is_seller? %>
+		<%= link_to "products", products_path %>
+	<% end %>
+
+	<h1>available for sale</h1>
+	<table border = "1">
+		<thead>
+			<th>Seller</th>
+			<th>Product</th>
+			<th>Price</th>
+			<th>Remarks</th>
+		</thead>
+
+		<% @sales.each do |sale| %>
+			<% if sale.buyer_id == nil %>
+			<tbody>
+				<td> <%= @sellers.find(sale.seller_id).first_name %> </td>
+				<td> <%= @products.find(sale.product_id).name %> </td>
+				<td> <%= sale.price %> </td>
+				<td> <%= sale.remarks %> </td>
+			</tbody>
+			<% end %>
+		<%end%>
+	</table>
 </body>
 </html>
