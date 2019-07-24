@@ -4,6 +4,17 @@
 	<title>Final Project</title>
 </head>
 <body>
+
+	
+	<hr/>
+	<br>
+
+	<%= image_tag("Dudetech_Spinoff.png") %>
+
+	<br>
+	<br>
+	<hr/>
+	<br><br>
 	<% if is_seller? || is_admin? %>
 		<%= link_to "products", products_path %>
 		<%= link_to "sales", sales_path%>
@@ -17,7 +28,7 @@
 		<%= link_to "categories", categories_path%>
 	<% end %>
 
-	<h1>available for sale</h1>
+	<h1>Available for Sale</h1>
 	<table border = "1">
 		<thead>
 			<th>Seller</th>

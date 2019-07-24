@@ -3,6 +3,7 @@
     <head></head>
     <body>
 
+    <div class="frm-bg">
     <%= form_for @seller do |s| %>
         <div>
             <%= s.label :email %>
@@ -10,33 +11,45 @@
             
         </div>
 
+        <br><br>
+
         <div>
             <%= s.label :password %>
             <%= s.password_field :password %>
         </div>
+
+        <br><br>
 
         <div>
             <%= s.label :first_name %>
             <%= s.text_field :first_name %>
         </div>
 
+        <br><br>
+
         <div>
             <%= s.label :last_name %>
             <%= s.text_field :last_name %>
         </div>
+
+        <br><br>
 
         <div>
             <%= s.label :sex %>
             <%= s.select :sex, ['Male', 'Female', 'Other'] %>
         </div>
 
+        <br><br>
+
         <div>
             <%= s.label :birthday%>
             <%= s.date_field :birthday %>
         </div>
 
+        <br><br>
+
         <%= s.submit %>
     <% end %>
-    
+    </div>
     </body>
 </html>

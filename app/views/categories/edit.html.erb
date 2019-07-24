@@ -4,12 +4,16 @@
 	<title></title>
 </head>
 <body>
+    <div class="frm-bg">
 	<%= form_for @categorie do |s| %>
     <div>
         <%= s.label :name %>
         <%= s.text_field :name %>
     </div>
+    <br><br>
     <%= s.submit "Submit Category" %>
+    <br><br>
     <% end %>
+</div>
 </body>
 </html>

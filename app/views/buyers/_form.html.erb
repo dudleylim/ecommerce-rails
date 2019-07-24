@@ -5,30 +5,42 @@
             
         </div>
 
+        <br><br>
+
         <div>
             <%= b.label :password %>
             <%= b.password_field :password %>
         </div>
+
+        <br><br>
 
         <div>
             <%= b.label :first_name %>
             <%= b.text_field :first_name %>
         </div>
 
+        <br><br>
+
         <div>
             <%= b.label :last_name %>
             <%= b.text_field :last_name %>
         </div>
+
+        <br><br>
 
         <div>
             <%= b.label :sex %>
             <%= b.select :sex, ['Male', 'Female', 'Other'] %>
         </div>
 
+        <br><br>
+
         <div>
             <%= b.label :birthday%>
             <%= b.date_field :birthday %>
         </div>
+
+        <br><br>
 
         <%= b.submit "Done" %>
     <% end %>

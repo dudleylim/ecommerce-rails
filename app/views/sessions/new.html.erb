@@ -4,6 +4,7 @@
 	<title></title>
 </head>
 <body>
+	<div class="frm-bg">
 	<h1>Log In</h1>
 		<%= form_for(:session, :html => {role: "form"}, url: login_path) do |i| %>
 		<div>
@@ -11,15 +12,20 @@
 			<%= i.email_field :email, placeholder: "Enter Email" %>
 		</div>
 
+		<br><br>
+
 		<div>
 			<%= i.label :password %>
 			<%= i.password_field :password, autocomplete: "off" %>
 		</div>
+
+		<br><br>
 
 		<p>
 			<%= i.submit "log in" %>
 		</p>
 
 		<% end %>
+	</div>
 </body>
 </html>

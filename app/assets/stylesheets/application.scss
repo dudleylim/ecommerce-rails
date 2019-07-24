@@ -24,6 +24,8 @@ background: url('smoltv.jpg');
 
 background-size: 100%;
 
+font-family: "Segoe ui light"
+
 }
 
 table {  
@@ -138,11 +140,25 @@ ul.nav a:hover { background-color: #7c9192 !important; }
   font-family: "Segoe UI"; font-size: 48px; font-style: normal; font-variant: normal; font-weight: 50; line-height: 37.4px; padding-top: 15px;
 }
 
-#frm-bg {
+.frm-bg {
   background-image: linear-gradient(rgba(232,230,227,0), rgba(232,230,227,1))
 }
 
 #white-box {
   background-color: #DDDDDD;
+}
+
+.aboutcolor{
+  color: #444444
+}
+
+.logo {
+  border: 1px groove #b3b3b3;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 

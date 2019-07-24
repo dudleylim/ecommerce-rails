@@ -8,6 +8,8 @@
         <% end %>
     </div>
 
+    <br><br>
+
     <div>
         <%= s.label :price %>
         <% if is_buyer? %>
@@ -17,6 +19,8 @@
         <% end %>
     </div>
 
+    <br><br>
+
     <div>
     	<%= s.label :remarks %>
         <% if is_buyer? %>
@@ -25,6 +29,8 @@
     	<%= s.text_field :remarks %>
         <% end %>
     </div>
+
+    <br><br>
 
     <%= s.submit "Submit Sale" %>
 <% end %>

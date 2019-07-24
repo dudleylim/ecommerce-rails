@@ -2,6 +2,7 @@
 <html>
     <head></head>
     <body>
+        <div class="frm-bg">
         <br>
 
         <%= form_for @product do |prod| %>
@@ -10,17 +11,24 @@
             <%= prod.text_field :name %>
         </div>
 
+        <br><br>
+
         <div>
             <%= prod.label :description %>
             <%= prod.text_field :description %>
         </div>
+
+        <br><br>
 
         <div>
             <%= prod.label :category_id %>
             <%= prod.collection_select(:category_id, @categories, :id, :name) %>
         </div>
 
+        <br><br>
+
         <%= prod.submit %>
     <% end %>
+    </div>
     </body>
 </html>
