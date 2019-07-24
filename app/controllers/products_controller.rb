@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
 	def new
         @product = Product.new
-        @categorie = Category.all
+        @categories = Category.all
 		render 'new.html.erb'
 	end
 
