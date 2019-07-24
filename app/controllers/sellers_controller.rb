@@ -11,8 +11,6 @@ class SellersController < ApplicationController
     def create
         @seller = Seller.new(seller_params)
 
-        @seller.admin = true
-
         if @seller.save
 			redirect_to root_path
 		else
