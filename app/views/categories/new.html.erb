@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<%= form_for @categorie do |s| %>
+    <div>
+        <%= s.label :name %>
+        <%= s.text_field :name %>
+        <% end %>
+    </div>
+    <%= s.submit "Submit Category" %>
+<% end %>
+</body>
+</html>

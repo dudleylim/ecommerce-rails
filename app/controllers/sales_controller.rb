@@ -1,4 +1,8 @@
 class SalesController < ApplicationController	
+	before_action :set_sale, only:[:show, :edit, :update, :destroy]
+	before_action :require_user
+	before_action :require_same_user, only:[:destroy]
+
 	def index
 		@sales = Sale.all
 		render 'index.html.erb'
@@ -31,9 +35,17 @@ class SalesController < ApplicationController
 	def update
 		@sale = Sale.find(params[:id])
 
+		if is_buyer?
+			@sale.buyer_id = current_user.id
+		end
+
 		if @sale.update(sales_params)
-			flash[:notice] = "Sale Updated"
-			redirect_to sales_path
+			if is_seller?
+				flash[:notice] = "Sale Updated"
+			elsif is_buyer?
+				flash[:notice] = "Thank you for your purchase"
+			end
+			redirect_to root_path
 		else
 			flash[:notice] = "Error"
 			render 'edit.html.erb'
@@ -50,7 +62,18 @@ class SalesController < ApplicationController
 	end
 
 	private
+		def set_sale
+			@sale = Sale.find(params[:id])
+		end
+
         def sales_params
             params.require(:sale).permit(:seller_id, :buyer_id, :product_id, :price, :remarks)
-        end
+		end
+		
+		def require_same_user
+			if (current_user != @sale.seller)
+				flash[:danger] = "You do not own this sale post"
+				redirect_to root_path
+			end
+		end
 end

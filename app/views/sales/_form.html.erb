@@ -1,17 +1,29 @@
 <%= form_for @sale do |s| %>
     <div>
         <%= s.label :product_id %>
+        <% if is_buyer?%>
+        <%= s.collection_select(:product_id, Product.all, :id, :name, readonly: true )%>
+        <% elsif is_seller? %>
         <%= s.collection_select(:product_id, Product.all, :id, :name) %>
+        <% end %>
     </div>
 
     <div>
         <%= s.label :price %>
+        <% if is_buyer? %>
+        <%= s.text_field :price, readonly: true %>
+        <% else is_seller?%>
         <%= s.text_field :price %>
+        <% end %>
     </div>
 
     <div>
     	<%= s.label :remarks %>
+        <% if is_buyer? %>
+    	<%= s.text_field :remarks, readonly: true %>
+        <% else is_seller?%>
     	<%= s.text_field :remarks %>
+        <% end %>
     </div>
 
     <%= s.submit "Submit Sale" %>

@@ -1,5 +1,6 @@
 class BuyersController < ApplicationController
     def index
+        @purchases = Sale.all
         render 'index.html.erb'
     end
 
@@ -15,7 +16,7 @@ class BuyersController < ApplicationController
 			redirect_to root_path
 		else
 			flash[:notice] = "Error"
-			render 'new'
+			render 'new.html.erb'
 		end
     end
 

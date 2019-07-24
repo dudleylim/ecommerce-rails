@@ -4,17 +4,18 @@
 	<title>Final Project</title>
 </head>
 <body>
+	<%= is_admin? %>
 
-	<% if logged_in? %>
-	<p>hi</p>
-	<%= current_user.first_name %>
-	<%= is_buyer? %>
+	<% if is_seller? || is_admin? %>
+		<%= link_to "products", products_path %>
 	<% end %>
 
-	<br>
-
 	<% if is_seller? %>
-		<%= link_to "products", products_path %>
+		<%= link_to "sales", sales_path%>
+	<% elsif is_buyer?%>
+		<%= link_to "purchases", purchases_path%>
+	<% elsif is_admin? %>
+		<%= link_to ""%>
 	<% end %>
 
 	<h1>available for sale</h1>
@@ -33,6 +34,9 @@
 				<td> <%= @products.find(sale.product_id).name %> </td>
 				<td> <%= sale.price %> </td>
 				<td> <%= sale.remarks %> </td>
+				<% if is_buyer? %>
+				<td> <%= link_to "Buy", edit_sale_path(sale) %> </td>
+				<% end %>
 			</tbody>
 			<% end %>
 		<%end%>

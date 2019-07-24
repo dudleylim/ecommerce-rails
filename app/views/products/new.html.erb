@@ -2,21 +2,6 @@
 <html>
     <head></head>
     <body>
-        <h2>Category list</h2>
-        <table border = "1">
-         <thead>
-             <th>ID</th>
-             <th>Name</th>
-         </thead>
-
-         <% @categories.each do |cat| %>
-             <tbody>
-                 <td> <%= cat.id %> </td>
-                 <td> <%= cat.name %> </td>
-             </tbody>
-         <% end %>
-         </table>
-
         <br>
 
         <%= form_for @product do |prod| %>
@@ -31,8 +16,8 @@
         </div>
 
         <div>
-            <%= prod.label :category%>
-            <%= prod.collection_select(:category, @categories, :id, :name) %>
+            <%= prod.label :category_id %>
+            <%= prod.collection_select(:category_id, @categories, :id, :name) %>
         </div>
 
         <%= prod.submit %>

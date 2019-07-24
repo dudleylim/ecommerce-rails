@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+    before_action :require_admin, only:[:edit, :update, :delete]
+
 	def index
 		@products = Product.all
 		render 'index.html.erb'
@@ -14,7 +16,7 @@ class ProductsController < ApplicationController
 		@product = Product.new(product_params)
 		if @product.save
             flash[:notice] = "Added new Product"
-            redirect_to products_index_path
+            redirect_to root_path
         else
             render 'new.html.erb'
         end
@@ -30,7 +32,7 @@ class ProductsController < ApplicationController
 
         if @product.update(product_params)
             flash[:notice] = "Successfully update Product"
-            redirect_to products_index_path
+            redirect_to root_path
         else
             render 'edit_product.html.erb'
         end
@@ -42,7 +44,7 @@ class ProductsController < ApplicationController
 
         @product.destroy
         flash[:notice] = "Successfully removed Product"
-        redirect_to products_index_path
+        redirect_to root_path
     end
     
     private

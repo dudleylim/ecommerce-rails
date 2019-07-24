@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :is_buyer?, :is_seller?
+    helper_method :current_user, :logged_in?, :is_buyer?, :is_seller?, :is_admin?
 
     def current_user
         if session[:username]
@@ -27,9 +27,37 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def is_admin?
+        if logged_in?
+            current_user.admin
+        end
+    end
+    
+
     def require_user
         if !logged_in?
             flash[:danger] = "not logged in"
+            redirect_to root_path
+        end
+    end
+
+    def require_buyer
+        if !is_buyer?
+            flash[:danger] = "not a buyer account"
+            redirect_to root_path
+        end
+    end
+
+    def require_seller
+        if !is_seller?
+            flash[:danger] = "not a seller account"
+            redirect_to root_path
+        end
+    end
+
+    def require_admin
+        if !is_admin?
+            flash[:danger] = "not a seller account"
             redirect_to root_path
         end
     end

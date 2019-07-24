@@ -44,6 +44,12 @@
   </div><!-- /.container-fluid -->
 </nav>
     <!-- NAVBAR END -->
+
+    <% flash.each do |name, msg | %>
+      <ul>
+        <li><%= msg %></li>
+      </ul>
+    <% end %>
     <%= yield %>
   </body>
 </html>

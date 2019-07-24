@@ -2,6 +2,26 @@
 <html>
     <head></head>
     <body>
-        <h1>index page for buyers</h1>
+        <h1>My purchases</h1>
+
+        <table>
+            <tr>
+                <th>Seller</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Remarks</th>
+            </tr>
+
+            <% @purchases.each do |pur| %>
+                <% if pur.buyer == current_user %>
+                <tr>
+                    <td> <%= pur.seller.first_name %> </td>
+                    <td> <%= pur.product.name %> </td>
+                    <td> <%= pur.price %> </td>
+                    <td> <%= pur.remarks %> </td>
+                </tr>
+                <% end %>
+            <% end %>
+        </table>
     </body>
 </html>

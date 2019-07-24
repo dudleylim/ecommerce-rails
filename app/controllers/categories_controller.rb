@@ -1,4 +1,8 @@
 class CategoriesController < ApplicationController
+    before_action :require_user 
+    before_action :require_admin
+
+
 	def index
 		@categories = Categories.all
 		render 'index.html.erb'
