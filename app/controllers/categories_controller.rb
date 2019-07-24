@@ -4,17 +4,17 @@ class CategoriesController < ApplicationController
 
 
 	def index
-		@categorie = Categories.all
+		@categories = Category.all
 		render 'index.html.erb'
 	end
 
 	def new
-		@categorie = Categories.new
+		@categorie = Category.new
 		render 'new.html.erb'
 	end
 
 	def create
-		@categorie = Categories.new(categorie_params)
+		@categorie = Category.new(categorie_params)
 		if @categorie.save
             flash[:notice] = "Added new Category"
             redirect_to root_path
@@ -24,33 +24,33 @@ class CategoriesController < ApplicationController
 	end
 
 	def edit
-		 @categorie = Categories.find(params[:id])
-        render 'edit_categorie.html.erb'
+		 @categorie = Category.find(params[:id])
+        render 'edit.html.erb'
     end
 
     def update
-    	@categorie = Categories.find(params[:id])
+    	@categorie = Category.find(params[:id])
 
         if @categorie.update(categorie_params)
             flash[:notice] = "Successfully update Category"
-            redirect_to categories_index_path
+            redirect_to root_path
         else
-            render 'edit_categorie.html.erb'
+            render 'edit.html.erb'
         end
 
     end
 
-    def delete
-        @categorie = Categories.find(params[:id])
+    def destroy
+        @categorie = Category.find(params[:id])
 
         @categorie.destroy
         flash[:notice] = "Successfully removed Category"
-        redirect_to categories_index_path
+        redirect_to root_path
     end
     
     private
         def categorie_params
-            params.require(:categorie).permit(:name)
+            params.require(:category).permit(:name)
         end
 
 end

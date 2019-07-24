@@ -2,6 +2,7 @@ class SalesController < ApplicationController
 	before_action :set_sale, only:[:show, :edit, :update, :destroy]
 	before_action :require_user
 	before_action :require_same_user, only:[:destroy]
+	before_action :require_is_not_admin, only:[:new, :create]
 
 	def index
 		@sales = Sale.all
@@ -76,4 +77,11 @@ class SalesController < ApplicationController
 				redirect_to root_path
 			end
 		end
+
+		def require_is_not_admin
+            if current_user.admin
+                flash[:danger] = "You can't add sales as admin"
+                redirect_to root_path
+            end
+        end
 end

@@ -4,6 +4,7 @@
 	<title></title>
 </head>
 <body>
+	<% if !current_user.admin %>
 	<h1>For Sale</h1>
 	<table>
 		<tr>
@@ -21,7 +22,7 @@
 					<td> <%= s.price %> </td>
 					<td> <%= s.remarks %> </td>
 					<td> <%= link_to "edit", edit_sale_path(s) %> </td>
-					<td> <%= link_to "destory", sale_path(s), method: :delete %> </td>
+					<td> <%= link_to "delete", sale_path(s), method: :delete %> </td>
 				</tr>
 			<% end %>
 		<% end %>
@@ -49,6 +50,30 @@
 			<% end %>
 		<% end %>
 	</table>
+	<% end %>
+
+	<% if current_user.admin %>
+	<table>
+		<tr>
+			<th>Product</th>
+			<th>Seller</th>
+			<th>Buyer</th>
+			<th>Price</th>
+			<th>Remarks</th>
+		</tr>
+		<% @sales.each do |s| %>
+			<tr>
+				<td> <%= s.product.name %> </td>
+				<td> <%= s.seller.first_name %></td>
+				<td> <%= s.buyer.first_name %> </td>
+				<td> <%= s.price %> </td>
+				<td> <%= s.remarks %> </td>
+				<td> <%= link_to "edit", edit_sale_path(s) %> </td>
+				<td> <%= link_to "delete", sale_path(s), method: :delete %> </td>
+			</tr>
+		<% end %>
+		</table>
+	<% end %>
 
 	<%= link_to "home", root_path %>
 	<%= link_to "New", new_sale_path %>

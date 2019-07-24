@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <table border = "1">
+    <thead>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+    </thead>
+
+    <% @categories.each do |cat| %>
+        <tbody>
+            <td> <%= cat.name %> </td>
+            <td> <%= link_to "Edit", edit_category_path(cat) %> </td>
+            <td> <%= link_to "Delete", category_path(cat), method: :delete %> </td>
+        </tbody>
+    <% end %>
+    </table>
+
+    <%= link_to "Create category", new_category_path%>
+</body>
+</html>

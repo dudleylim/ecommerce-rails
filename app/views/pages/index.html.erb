@@ -8,14 +8,17 @@
 
 	<% if is_seller? || is_admin? %>
 		<%= link_to "products", products_path %>
+		<%= link_to "sales", sales_path%>
+
 	<% end %>
 
-	<% if is_seller? %>
-		<%= link_to "sales", sales_path%>
-	<% elsif is_buyer?%>
+	<% if is_buyer?%>
 		<%= link_to "purchases", purchases_path%>
-	<% elsif is_admin? %>
-		<%= link_to ""%>
+	<% end %>
+
+	<% if is_admin? %>
+		<%= link_to "categories", categories_path%>
+		<%= link_to "" %>
 	<% end %>
 
 	<h1>available for sale</h1>

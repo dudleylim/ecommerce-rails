@@ -2,7 +2,7 @@
     <div>
         <%= s.label :product_id %>
         <% if is_buyer?%>
-        <%= s.collection_select(:product_id, Product.all, :id, :name, readonly: true )%>
+        <%= @sale.product.name %>
         <% elsif is_seller? %>
         <%= s.collection_select(:product_id, Product.all, :id, :name) %>
         <% end %>

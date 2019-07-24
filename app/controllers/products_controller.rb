@@ -53,4 +53,6 @@ class ProductsController < ApplicationController
             params.require(:product).permit(:name, :description, :category_id)
         end
 
+        
+
 end

@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get 'products', to: 'products#index'
   get 'sales', to: 'sales#index'
   get 'purchases', to: 'buyers#index'
+  get 'categories', to: 'categories#index'
 end
