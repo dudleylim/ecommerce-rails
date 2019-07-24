@@ -21,13 +21,26 @@ class BuyersController < ApplicationController
     end
 
     def edit
+        @buyer = Buyer.find(params[:id])
+        render 'edit.html.erb'
     end
 
     def update
+        @buyer = Buyer.find(params[:id])
+
+        if @buyer.update(buyer_params)
+            flash[:notice] = "Profile Updated"
+            redirect_to @buyer
+        else
+            flash[:notice] = "Error"
+            render 'edit.html.erb'
+        end
     end
 
     def show
-        
+        @buyer = Buyer.find(params[:id])
+        @sale = Sale.where(buyer_id: params[:id])
+        render 'show.html.erb'
     end
     
     private

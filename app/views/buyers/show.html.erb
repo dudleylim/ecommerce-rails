@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1><%= @buyer.first_name %> <%= @buyer.last_name %></h1>
+	<div>
+		<div>EMAIL: <%= @buyer.email %></div>
+		<div> Sex: <%= @buyer.sex %> </div>
+		<div> DoB: <%= @buyer.birthday %> </div>
+		<div>
+			Date Joined: <%= @buyer.created_at %>
+		</div>
+
+		<%= link_to "Update Profile", edit_buyer_path %>
+		<div>
+		<table>
+				<thead>
+					<th>Seller Name</th>
+					<th>Product</th>
+					<th>Price</th>
+					<th>Remarks</th>
+					<th>Date Bought</th>
+				</thead>
+			<% @sale.each do |l|%>
+				<tr>
+					<td> <%= l.seller.first_name %> </td>
+					<td> <%= l.product.name %></td>
+					<td> <%= l.price %></td>
+					<td> <%= l.remarks %> </td>
+					<td> <%= l.updated_at %> </td>
+				</tr>
+			<% end %>
+		</table>
+		</div>
+	</div>
+</body>
+</html>

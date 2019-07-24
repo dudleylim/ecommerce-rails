@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
 
 	def index
-		@categories = Categories.all
+		@categorie = Categories.all
 		render 'index.html.erb'
 	end
 

@@ -2,41 +2,10 @@
 <html>
     <head></head>
     <body>
+    <h1> New Buyer Account </h1>
+    
+    <%= render 'form' %>
 
-    <%= form_for @buyer do |b| %>
-        <div>
-            <%= b.label :email %>
-            <%= b.email_field :email %>
-            
-        </div>
-
-        <div>
-            <%= b.label :password %>
-            <%= b.password_field :password %>
-        </div>
-
-        <div>
-            <%= b.label :first_name %>
-            <%= b.text_field :first_name %>
-        </div>
-
-        <div>
-            <%= b.label :last_name %>
-            <%= b.text_field :last_name %>
-        </div>
-
-        <div>
-            <%= b.label :sex %>
-            <%= b.select :sex, ['Male', 'Female', 'Other'] %>
-        </div>
-
-        <div>
-            <%= b.label :birthday%>
-            <%= b.date_field :birthday %>
-        </div>
-
-        <%= b.submit %>
-    <% end %>
     
     </body>
 </html>
