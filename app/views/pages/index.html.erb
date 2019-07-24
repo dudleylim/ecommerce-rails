@@ -4,12 +4,9 @@
 	<title>Final Project</title>
 </head>
 <body>
-	<%= is_admin? %>
-
 	<% if is_seller? || is_admin? %>
 		<%= link_to "products", products_path %>
 		<%= link_to "sales", sales_path%>
-
 	<% end %>
 
 	<% if is_buyer?%>
@@ -18,7 +15,6 @@
 
 	<% if is_admin? %>
 		<%= link_to "categories", categories_path%>
-		<%= link_to "" %>
 	<% end %>
 
 	<h1>available for sale</h1>
