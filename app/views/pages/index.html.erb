@@ -15,19 +15,7 @@
 	<br>
 	<hr/>
 	<br><br>
-	<% if is_seller? || is_admin? %>
-		<%= link_to "products", products_path %>
-		<%= link_to "sales", sales_path%>
-	<% end %>
-
-	<% if is_buyer?%>
-		<%= link_to "purchases", purchases_path%>
-	<% end %>
-
-	<% if is_admin? %>
-		<%= link_to "categories", categories_path%>
-	<% end %>
-
+	
 	<h1>Available for Sale</h1>
 	<table border = "1">
 		<thead>

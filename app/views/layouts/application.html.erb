@@ -29,7 +29,21 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"> <%= link_to "Home", root_path %> <span class="sr-only">(current)</span></a></li>
-        <li><%= link_to "About", about_path %></li>
+
+          <li><%= link_to "About", about_path %></li>
+          <% if is_seller? || is_admin? %>
+            <li><%= link_to "products", products_path %></li>
+            <li><%= link_to "sales", sales_path%></li>
+          <% end %>
+
+          <% if is_buyer?%>
+            <li><%= link_to "purchases", purchases_path%></li>
+          <% end %>
+
+          <% if is_admin? %>
+            <li><%= link_to "categories", categories_path%></li>
+          <% end %>
+
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
